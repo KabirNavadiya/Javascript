@@ -406,3 +406,19 @@ const jonasArray = [
 // }else {
 //     console.log(`${john.fullName}'s BMI (${john.calcBMI()}) is higher than ${mark.fullName}'s (${mark.calcBMI()})!`);
 // }
+
+
+// let n=5;
+// for(let i=1;i<=n;i++){
+//     let str1="";
+//     for(let j=1;j<=i;j++){
+//         str1+="*"
+//     }
+//     console.log(str1);
+// }
+
+// // approach 2
+// for(let i=1;i<=n;i++){
+//     console.log("*".repeat(i));
+    
+// }
