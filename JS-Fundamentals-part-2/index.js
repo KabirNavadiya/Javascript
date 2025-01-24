@@ -120,12 +120,58 @@ const jonasArray = [
     'teacher',
     ['Michael','Peter','Steven']
 ]
+// const types = [];
+// for(let i=0;i<jonasArray.length;i++){
+//     console.log(jonasArray[i],typeof jonasArray[i]);
+//     types[i]=typeof jonasArray[i];
+//     // types.push(typeof jonasArray[i]);
+// }
+// console.log(types);
 
-for(let i=0;i<jonasArray.length;i++){
-console.log(jonasArray[i],typeof jonasArray[i]);
 
-}
+// //continue and breaking.
 
+// console.log('--- CONTINUNE ---');
+
+// for(let i =0;i<jonasArray.length;i++){
+//     if(typeof jonasArray[i]!=='string'){
+//         continue;
+//     }else{
+//         console.log(jonasArray[i],typeof jonasArray[i]);
+        
+//     }
+// }
+
+// console.log('--- BREAK ---');
+
+// for(let i =0;i<jonasArray.length;i++){
+//     if(typeof jonasArray[i]==='number'){
+//         break;
+//     }else{
+//         console.log(jonasArray[i],typeof jonasArray[i]);
+//     }
+// }
+
+
+
+// const Numbers = [1,2,3,4,5];
+
+// // looping backwards
+// for(let i=Numbers.length-1;i>=0;i--){
+//     console.log(Numbers[i]);
+// }
+
+
+// //nested loops
+
+// for(let i=1;i<=5;i++){
+//     console.log(i);
+//     if(i===2){
+//         for(let j=1;j<=3;j++){
+//             console.log(`-> ${j}`);
+//         }
+//     }
+// }
 
 // let dice = Math.trunc(Math.random() * 6)+1;
 // while(dice != 6){
