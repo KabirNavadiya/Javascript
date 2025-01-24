@@ -212,4 +212,45 @@
 
 
 
+// Introduction to objects. (key/value pairs).
+
+//object literal syntax
+const jonas = {
+    firstName : 'Jonas',
+    lastName : 'schmedtmann',
+    age : 2024 - 2003,
+    job : 'Teacher',
+    friends : ['Michael','Peter','Steven']
+};
+
+console.log(jonas);
+// getting property from object using . notation.
+console.log(jonas.firstName);
+console.log(jonas.lastName);
+console.log(jonas.age);
+console.log(jonas.job);
+console.log(jonas.friends);
+
+// using bracket notation.
+console.log(jonas['lastName']);
+
+const nameKey = 'Name';
+console.log(jonas['first'+nameKey]);
+console.log(jonas['last'+nameKey]); // not work with dot notation.
+
+jonas.locaton = 'Portugal';
+jonas['twitter'] = '@jonasschmedtman';
+console.log(jonas);
+
+// #challenge "Jonas has 3 friends and his best friend is michael"
+console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
+
+
+
+
+
+
+
+
+
 
