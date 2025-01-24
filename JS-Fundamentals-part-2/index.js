@@ -73,7 +73,29 @@
 
 // console.log(fruitProcessor(2,3));
 
+//Functions challenge 
 
+
+/* Write your code below. Good luck! 🙂 */
+
+// const calcAverage = (score1,score2,score3)=>{
+//     const avg = (score1 + score2 + score3)/3;
+//     return avg;
+// }
+// const scoreDolphins = calcAverage(44,23,71);
+// const scoreKoalas = calcAverage(65,54,49);
+
+// function checkWinner(avgDolphins,avgKoalas){
+//     if(avgDolphins>avgKoalas && avgDolphins >= 2*avgKoalas){
+//         console.log(`Dolphins win (${avgDolphins} vs. ${avgKoalas})`);
+//     }else if (avgKoalas>avgDolphins && avgKoalas >= 2*avgDolphins){
+//         console.log(`Koalas win (${avgKoalas} vs. ${avgDolphins})`);
+//     }else{
+//         console.log(`No team wins...`);
+//     }
+// }
+
+// console.log(checkWinner(scoreDolphins,scoreKoalas));
 
 // Loops 
 
@@ -91,6 +113,65 @@
 //     i++;
 // }
 
+const jonasArray = [
+    'Jonas',
+    'Schmedtmann',
+    2024 - 2003,
+    'teacher',
+    ['Michael','Peter','Steven']
+]
+// const types = [];
+// for(let i=0;i<jonasArray.length;i++){
+//     console.log(jonasArray[i],typeof jonasArray[i]);
+//     types[i]=typeof jonasArray[i];
+//     // types.push(typeof jonasArray[i]);
+// }
+// console.log(types);
+
+
+// //continue and breaking.
+
+// console.log('--- CONTINUNE ---');
+
+// for(let i =0;i<jonasArray.length;i++){
+//     if(typeof jonasArray[i]!=='string'){
+//         continue;
+//     }else{
+//         console.log(jonasArray[i],typeof jonasArray[i]);
+        
+//     }
+// }
+
+// console.log('--- BREAK ---');
+
+// for(let i =0;i<jonasArray.length;i++){
+//     if(typeof jonasArray[i]==='number'){
+//         break;
+//     }else{
+//         console.log(jonasArray[i],typeof jonasArray[i]);
+//     }
+// }
+
+
+
+// const Numbers = [1,2,3,4,5];
+
+// // looping backwards
+// for(let i=Numbers.length-1;i>=0;i--){
+//     console.log(Numbers[i]);
+// }
+
+
+// //nested loops
+
+// for(let i=1;i<=5;i++){
+//     console.log(i);
+//     if(i===2){
+//         for(let j=1;j<=3;j++){
+//             console.log(`-> ${j}`);
+//         }
+//     }
+// }
 
 // let dice = Math.trunc(Math.random() * 6)+1;
 // while(dice != 6){
@@ -100,4 +181,318 @@
 //         console.log(`Rolled ${dice}.`);
         
 //     }
+// }
+
+
+// #challenge Arrays 
+// const calcTip = function (bill) {
+//     return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+//   }
+//   const calcAverage = (arr)=>{
+//       let sum=0;
+//       for(let i=0;i<arr.length;i++){
+//           sum=sum+arr[i];
+//       }
+//       return sum/arr.length;
+//   }
+  
+//   /* Write your code below. Good luck! 🙂 */
+  
+//   const bills = [22,295,176,440,37,105,10,1100,86,52];
+//   const tips = [];
+//   const totals = [];
+  
+//   for(let i=0;i<bills.length;i++){
+//       tips.push(calcTip(bills[i]));
+//   }
+//   for(let i=0;i<bills.length;i++){
+//       totals.push(calcTip(bills[i]) + bills[i]);
+//   }
+//   console.log(tips);
+//   console.log(totals);
+  
+//   console.log(calcAverage(totals));
+
+// Introduction to Arrays.
+
+// const friends =  ["kabir", "dhairya","raj","harsh","rudra","urvin"];
+// console.log("Array size :",friends.length);
+
+// for(let i=0;i<friends.length;i++){
+//     console.log(friends[i]);
+// }
+
+// const years = new Array(2000,2001,2002,2003,2004);
+// const calcAge = function (birthYear) {
+//     return 2024 - birthYear;
+// }
+// const age1 = calcAge(years[0]);
+// const age2 = calcAge(years[1]);
+// const age3 = calcAge(years[2]);
+// console.log(age1,age2,age3);
+
+
+// // functions as a element of array (expression).
+// const ages = [calcAge(years[0]),calcAge(years[1]),calcAge(years[2])]
+// console.log(ages);
+
+
+
+// //Array methods.
+
+// //add
+// const friends = ['Michael', 'Steven', 'Peter'];
+// console.log(friends,friends.length);
+
+// friends.push('Jay'); // add element at last pos of array.
+// console.log(friends,friends.length);
+
+
+// friends.unshift('John'); // add element at begining of array.
+// console.log(friends , friends.length);
+
+
+// //remove
+// const popped=friends.pop(); // remove last element of array.
+// console.log("popped element :",popped);
+
+// console.log(friends,friends.length);
+
+
+// friends.shift(); // remove first element of array.
+// console.log(friends,friends.length);
+
+// // index of
+// console.log(friends.indexOf('Steven'));
+
+
+// // includes.
+// console.log("Steven present?",friends.includes('Steven'));
+// console.log("bob present?",friends.includes('bob'));
+
+
+// // #Challenge Array 
+
+// /* Write your code below. Good luck! 🙂 */
+
+// const calcTip = (billValue)=>{
+//     let tipvalue;
+//     if(billValue>=50 && billValue<=300){
+//         tipvalue = billValue*0.15;
+//     }else{
+//         tipvalue=billValue*0.20;
+//     }
+//     return tipvalue;
+// }
+
+// const bills = new Array(125,555,44);
+// const tips = new Array(calcTip(bills[0]),calcTip(bills[1]),calcTip(bills[2]));
+
+// console.log(bills);
+// console.log(tips);
+
+// const total = [];
+// for(let i;i<bills.length;i++){
+//     let totalBillValue = bills[i]+tips[i];
+//     total.push(totalBillValue);
+// }
+// console.log(total);
+
+
+
+// // Introduction to objects. (key/value pairs).
+
+// //object literal syntax
+// const jonas = {
+//     firstName : 'Jonas',
+//     lastName : 'schmedtmann',
+//     age : 2024 - 2003,
+//     job : 'Teacher',
+//     friends : ['Michael','Peter','Steven']
+// };
+
+// console.log(jonas);
+// // getting property from object using . notation.
+// console.log(jonas.firstName);
+// console.log(jonas.lastName);
+// console.log(jonas.age);
+// console.log(jonas.job);
+// console.log(jonas.friends);
+
+// // using bracket notation.
+// console.log(jonas['lastName']);
+
+// const nameKey = 'Name';
+// console.log(jonas['first'+nameKey]);
+// console.log(jonas['last'+nameKey]); // not work with dot notation.
+
+// jonas.locaton = 'Portugal';
+// jonas['twitter'] = '@jonasschmedtman';
+// console.log(jonas);
+
+// // #challenge "Jonas has 3 friends and his best friend is michael"
+// console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
+
+
+
+
+// // Object methods . 
+
+
+// const jonas = {
+//     firstName : 'Jonas',
+//     lastName : 'Schmedtmann',
+//     birthYear : '1991',
+//     job : 'teacher',
+//     friends : ['Michael', ' Peter','Steven'],
+//     hasDriversLicense : true,
+
+//     // calcAge : function(birthYear){
+//     //     return 2024 - birthYear;
+//     // }
+//     calcAge : function(){
+//         this.age= 2024 - this.birthYear;
+//         return this.age;
+//     },
+
+//     getSummary : function(){
+//         return `${this.firstName} is a ${this.calcAge()}-years old ${this.job}, and he has ${this.hasDriversLicense ? 'a' : 'no'} Driver's license.`
+//     }
+// };
+
+// // // console.log(jonas.calcAge(jonas.birthYear));
+// // console.log("funtion calling age : ",jonas.calcAge());
+// // // console.log(jonas['calcAge'](2003));
+// // const age = jonas.calcAge();
+// // console.log("Stored function call age : ",age);
+// // console.log("Stored function call age : ",age);
+
+
+// // #challenege 
+// // "Jonas is a 46-years old teacher, and he has a driver's license".
+
+// console.log(jonas.getSummary());
+
+
+// // # object challenge 
+
+// /* Write your code below. Good luck! 🙂 */
+
+// const mark = {
+//     fullName : 'Mark Miller',
+//     mass : 78,
+//     height :1.69,
+    
+    
+//     calcBMI : function (){
+//         this.bmi = this.mass/(this.height*this.height);
+//         return this.bmi;
+//     }
+// };
+// const john = {
+//     fullName : 'John Smith',
+//     mass : 92,
+//     height : 1.95,
+    
+    
+//     calcBMI : function (){
+//         this.bmi = this.mass/(this.height*this.height);
+//         return this.bmi;
+//     }
+// };
+
+// if(mark.calcBMI() > john.calcBMI()){
+//     console.log(`${mark.fullName}'s BMI (${mark.calcBMI()}) is higher than ${john.fullName}'s (${john.calcBMI()})!`);
+// }else {
+//     console.log(`${john.fullName}'s BMI (${john.calcBMI()}) is higher than ${mark.fullName}'s (${mark.calcBMI()})!`);
+// }
+
+
+
+
+// *
+// **
+// ***
+// ****
+// *****
+
+// let n=5;
+// for(let i=1;i<=n;i++){
+//     let str1="";
+//     for(let j=1;j<=i;j++){
+//         str1+="*"
+//     }
+//     console.log(str1);
+// }
+
+// // approach 2
+// for(let i=1;i<=n;i++){
+//     console.log("*".repeat(i));
+    
+// }
+
+// approach 3
+// for(let i=1;i<=5;i++){
+//     for(let j=1;j<=i;j++){
+//         process.stdout.write("*");
+//     }
+//     console.log();
+    
+// }
+
+
+// *****
+// *   *
+// *   *
+// *   *
+// *****
+
+//approach 1
+
+// let n=5;
+// for(let i=1;i<=n;i++){
+//     str1=""
+//     if(i===1 || i===n){
+//         str1+="*".repeat(5);
+//     }
+//     else{
+//         str1+="*".padEnd(4," ");
+//         str1+="*";
+//     }
+//     console.log(str1);
+// } 
+
+
+
+// *****
+// ****
+// ***
+// **
+// *
+
+// for(let i=1;i<=5;i++){
+//     for(let j=5;j>=i;j--){
+//         process.stdout.write("*");
+//     }
+//     console.log();
+// }
+
+
+
+// *****
+//  ****
+//   ***
+//    **
+//     *
+
+// for(let i=1;i<=5;i++){
+//     for(let j=1;j<=5;j++){
+//         if(j>=i){
+//             process.stdout.write("*");
+//         }
+//         else{
+//             process.stdout.write(" ");
+//         }
+//     }
+//     console.log();
 // }
