@@ -408,6 +408,14 @@ const jonasArray = [
 // }
 
 
+
+
+// *
+// **
+// ***
+// ****
+// *****
+
 // let n=5;
 // for(let i=1;i<=n;i++){
 //     let str1="";
@@ -422,3 +430,69 @@ const jonasArray = [
 //     console.log("*".repeat(i));
     
 // }
+
+// approach 3
+// for(let i=1;i<=5;i++){
+//     for(let j=1;j<=i;j++){
+//         process.stdout.write("*");
+//     }
+//     console.log();
+    
+// }
+
+
+// *****
+// *   *
+// *   *
+// *   *
+// *****
+
+//approach 1
+
+// let n=5;
+// for(let i=1;i<=n;i++){
+//     str1=""
+//     if(i===1 || i===n){
+//         str1+="*".repeat(5);
+//     }
+//     else{
+//         str1+="*".padEnd(4," ");
+//         str1+="*";
+//     }
+//     console.log(str1);
+// } 
+
+
+
+// *****
+// ****
+// ***
+// **
+// *
+
+// for(let i=1;i<=5;i++){
+//     for(let j=5;j>=i;j--){
+//         process.stdout.write("*");
+//     }
+//     console.log();
+// }
+
+
+
+// *****
+//  ****
+//   ***
+//    **
+//     *
+
+for(let i=1;i<=5;i++){
+    for(let j=1;j<=5;j++){
+        if(j>=i){
+            process.stdout.write("*");
+        }
+        else{
+            process.stdout.write(" ");
+        }
+    }
+    console.log();
+}
