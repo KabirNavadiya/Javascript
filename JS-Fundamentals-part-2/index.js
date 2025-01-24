@@ -113,6 +113,19 @@
 //     i++;
 // }
 
+const jonasArray = [
+    'Jonas',
+    'Schmedtmann',
+    2024 - 2003,
+    'teacher',
+    ['Michael','Peter','Steven']
+]
+
+for(let i=0;i<jonasArray.length;i++){
+console.log(jonasArray[i],typeof jonasArray[i]);
+
+}
+
 
 // let dice = Math.trunc(Math.random() * 6)+1;
 // while(dice != 6){
@@ -212,45 +225,109 @@
 
 
 
-// Introduction to objects. (key/value pairs).
+// // Introduction to objects. (key/value pairs).
 
-//object literal syntax
-const jonas = {
-    firstName : 'Jonas',
-    lastName : 'schmedtmann',
-    age : 2024 - 2003,
-    job : 'Teacher',
-    friends : ['Michael','Peter','Steven']
-};
+// //object literal syntax
+// const jonas = {
+//     firstName : 'Jonas',
+//     lastName : 'schmedtmann',
+//     age : 2024 - 2003,
+//     job : 'Teacher',
+//     friends : ['Michael','Peter','Steven']
+// };
 
-console.log(jonas);
-// getting property from object using . notation.
-console.log(jonas.firstName);
-console.log(jonas.lastName);
-console.log(jonas.age);
-console.log(jonas.job);
-console.log(jonas.friends);
+// console.log(jonas);
+// // getting property from object using . notation.
+// console.log(jonas.firstName);
+// console.log(jonas.lastName);
+// console.log(jonas.age);
+// console.log(jonas.job);
+// console.log(jonas.friends);
 
-// using bracket notation.
-console.log(jonas['lastName']);
+// // using bracket notation.
+// console.log(jonas['lastName']);
 
-const nameKey = 'Name';
-console.log(jonas['first'+nameKey]);
-console.log(jonas['last'+nameKey]); // not work with dot notation.
+// const nameKey = 'Name';
+// console.log(jonas['first'+nameKey]);
+// console.log(jonas['last'+nameKey]); // not work with dot notation.
 
-jonas.locaton = 'Portugal';
-jonas['twitter'] = '@jonasschmedtman';
-console.log(jonas);
+// jonas.locaton = 'Portugal';
+// jonas['twitter'] = '@jonasschmedtman';
+// console.log(jonas);
 
-// #challenge "Jonas has 3 friends and his best friend is michael"
-console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
-
-
+// // #challenge "Jonas has 3 friends and his best friend is michael"
+// console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
 
 
 
 
+// // Object methods . 
 
 
+// const jonas = {
+//     firstName : 'Jonas',
+//     lastName : 'Schmedtmann',
+//     birthYear : '1991',
+//     job : 'teacher',
+//     friends : ['Michael', ' Peter','Steven'],
+//     hasDriversLicense : true,
+
+//     // calcAge : function(birthYear){
+//     //     return 2024 - birthYear;
+//     // }
+//     calcAge : function(){
+//         this.age= 2024 - this.birthYear;
+//         return this.age;
+//     },
+
+//     getSummary : function(){
+//         return `${this.firstName} is a ${this.calcAge()}-years old ${this.job}, and he has ${this.hasDriversLicense ? 'a' : 'no'} Driver's license.`
+//     }
+// };
+
+// // // console.log(jonas.calcAge(jonas.birthYear));
+// // console.log("funtion calling age : ",jonas.calcAge());
+// // // console.log(jonas['calcAge'](2003));
+// // const age = jonas.calcAge();
+// // console.log("Stored function call age : ",age);
+// // console.log("Stored function call age : ",age);
 
 
+// // #challenege 
+// // "Jonas is a 46-years old teacher, and he has a driver's license".
+
+// console.log(jonas.getSummary());
+
+
+// // # object challenge 
+
+// /* Write your code below. Good luck! 🙂 */
+
+// const mark = {
+//     fullName : 'Mark Miller',
+//     mass : 78,
+//     height :1.69,
+    
+    
+//     calcBMI : function (){
+//         this.bmi = this.mass/(this.height*this.height);
+//         return this.bmi;
+//     }
+// };
+// const john = {
+//     fullName : 'John Smith',
+//     mass : 92,
+//     height : 1.95,
+    
+    
+//     calcBMI : function (){
+//         this.bmi = this.mass/(this.height*this.height);
+//         return this.bmi;
+//     }
+// };
+
+// if(mark.calcBMI() > john.calcBMI()){
+//     console.log(`${mark.fullName}'s BMI (${mark.calcBMI()}) is higher than ${john.fullName}'s (${john.calcBMI()})!`);
+// }else {
+//     console.log(`${john.fullName}'s BMI (${john.calcBMI()}) is higher than ${mark.fullName}'s (${mark.calcBMI()})!`);
+// }
