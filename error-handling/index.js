@@ -18,3 +18,19 @@
 
 
 // The THROW statement allows you to create a custom error.
+
+function myThrowFunc(){
+    const message = document.getElementById("p01");
+    let x = document.getElementById("input_msg").value;
+    message.innerHTML="YAY ! You selected : "+x;
+    try {
+
+        if(x.trim()=="") throw "empty input! please enter something";
+        if(isNaN(x)) throw "Invalid Input! not a number";
+        x=Number(x);
+        if(x<5) throw "Number less than 5! not valid";
+        if(x>10) throw "Number greater than 10 ! too Big !!!";
+    } catch (err) {
+        message.innerHTML="Input is  " + err;
+    }
+}
