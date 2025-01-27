@@ -88,33 +88,53 @@
 
 
 
-// ES6 CLASSES
+// // ES6 CLASSES
 
-class Personcl{
-    constructor(firstName,birthYear){
-        this.firstName=firstName;
-        this.birthYear=birthYear;
-    }
+// class Personcl{
+//     constructor(firstName,birthYear){
+//         this.firstName=firstName;
+//         this.birthYear=birthYear;
+//     }
 
-    // Methods will be added to .prototype property.
-    calcAge(){
-        console.log(2024 - this.birthYear);
-    }
-    greet(){
-            console.log(`Hey ${this.firstName}`);
-        }
-}
-
-const jessica = new Personcl('Jessica',1996);
-jessica.calcAge();
-
-// Personcl.prototype.greet= function(){
-//     console.log(`Hey ${this.firstName}`);
+//     // Methods will be added to .prototype property.
+//     calcAge(){
+//         console.log(2024 - this.birthYear);
+//     }
+//     greet(){
+//             console.log(`Hey ${this.firstName}`);
+//         }
 // }
-jessica.greet();
 
-// 1. classes are NOT hoisted (means we cannot use them before declaration.)
-// 2. classes are first-calss citizens(means we can pass them with function and also return them.)
-// 3. body of classes is always executed in strict mode.
+// const jessica = new Personcl('Jessica',1996);
+// jessica.calcAge();
 
+// // Personcl.prototype.greet= function(){
+// //     console.log(`Hey ${this.firstName}`);
+// // }
+// jessica.greet();
+
+// // 1. classes are NOT hoisted (means we cannot use them before declaration.)
+// // 2. classes are first-calss citizens(means we can pass them with function and also return them.)
+// // 3. body of classes is always executed in strict mode.
+
+
+
+// GETTERS & SETTERS
+
+const account= {
+
+    owner:'kabir',
+    movements:[200,530,120,300],
+
+    get latest(){
+        return this,this.movements.slice(-1).pop();
+    },
+    set latest(mov){
+        this.movements.push(mov);
+    }
+};
+
+console.log(account.latest);
+account.latest = 50;
+console.log(account.movements);
 
