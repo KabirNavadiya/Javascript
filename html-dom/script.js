@@ -3,7 +3,7 @@ const body = document.body
 // // body.appendChild("Hello World !")
 
 // creating elements
-const div = document.createElement("div") 
+// const div = document.createElement("div") 
 
 
 
@@ -37,4 +37,19 @@ const div = document.createElement("div")
 // body.append(strong)
 
 
-body.append(div)
+// body.append(div)
+
+
+
+// Remove html elements
+
+// const div = document.querySelector("div")
+// const spanHi = document.querySelector("#hi")
+// const spanBye = document.querySelector("#bye")
+
+//method 1
+// spanBye.remove()
+
+// method2
+// div.removeChild(spanHi)
+
