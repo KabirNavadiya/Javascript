@@ -90,3 +90,31 @@
 
 // ES6 CLASSES
 
+class Personcl{
+    constructor(firstName,birthYear){
+        this.firstName=firstName;
+        this.birthYear=birthYear;
+    }
+
+    // Methods will be added to .prototype property.
+    calcAge(){
+        console.log(2024 - this.birthYear);
+    }
+    greet(){
+            console.log(`Hey ${this.firstName}`);
+        }
+}
+
+const jessica = new Personcl('Jessica',1996);
+jessica.calcAge();
+
+// Personcl.prototype.greet= function(){
+//     console.log(`Hey ${this.firstName}`);
+// }
+jessica.greet();
+
+// 1. classes are NOT hoisted (means we cannot use them before declaration.)
+// 2. classes are first-calss citizens(means we can pass them with function and also return them.)
+// 3. body of classes is always executed in strict mode.
+
+
