@@ -14,13 +14,14 @@
 //     adddlert("Welcome Guest !");
 // } catch (err) {
 //     document.getElementById("demo").innerHTML = err.message;
-// }
+// }finally block
 
 
 // The THROW statement allows you to create a custom error.
 
 function myThrowFunc(){
     const message = document.getElementById("p01");
+    const msg = document.getElementById("p02");
     let x = document.getElementById("input_msg").value;
     message.innerHTML="YAY ! You selected : "+x;
     try {
@@ -32,5 +33,9 @@ function myThrowFunc(){
         if(x>10) throw "Number greater than 10 ! too Big !!!";
     } catch (err) {
         message.innerHTML="Input is  " + err;
+    }
+    finally{
+        msg.innerHTML=document.getElementById("p02").value= "finally block" ;
+       
     }
 }
