@@ -53,3 +53,13 @@ const body = document.body
 // method2
 // div.removeChild(spanHi)
 
+
+
+// Modifying elements attributes
+
+const div = document.querySelector("div")
+const spanHi = document.querySelector("#hi")
+const spanBye = document.querySelector("#bye")
+
+spanHi.getAttribute("id")
+spanHi.setAttribute("id","_hi")
