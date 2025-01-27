@@ -61,5 +61,14 @@ const div = document.querySelector("div")
 const spanHi = document.querySelector("#hi")
 const spanBye = document.querySelector("#bye")
 
-spanHi.getAttribute("id")
-spanHi.setAttribute("id","_hi")
+// spanHi.getAttribute("id")
+// spanHi.setAttribute("id","_hi")
+
+
+
+// modify data attribute
+// spanHi.dataset.newName = "hi"
+
+// spanHi.classList.add("new-class")
+// spanHi.classList.remove("hi1")
+// spanHi.classList.toggle("hi3")
