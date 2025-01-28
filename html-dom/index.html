@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOM Manipulation</title>
-    <script src="script.js" defer></script>
-    
-</head>
-<body>
-  
-    <div>
-        <span class="hi1 hi2" id="hi" >Hello</span>
-        <span id="bye">Bye</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Guess My Number!</title>
+    <style>
+        .content{
+            height: 300px;
+            width: 300px;
+            background-color: black;
+            color: white;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+
+        <header style="margin: 5px;" >
+          <h1>Guess My Number!</h1>
+          <p class="between">(Between 1 and 20)</p>
+          <button class="btn again" onclick="ResetFunc()">Again!</button>
+          <div class="number" style="margin: 5px;" >?</div>
+        </header>
+        <main style="margin: 5px;" >
+          <section class="left">
+            <input type="number" class="guess" />
+            <button class="btn check" onclick="CheckFunc()">Check!</button>
+          </section>
+          <section class="right">
+            <p class="message">Start guessing...</p>
+            <p class="label-score">Chances: <span class="score">20</span></p>
+            <p class="label-highscore">Previous guess in : <span class="highscore">0</span> turns</p>
+          </section>
+        </main>
     </div>
-    
-</body>
+    <script src="/html-dom/script.js"></script>
+  </body>
 </html>
