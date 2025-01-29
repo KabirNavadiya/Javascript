@@ -27,14 +27,14 @@ const winPatterns= [
 function Reset(){
     disableBoxes();
     playerTurn = 0;
-    enableBoxes();
+    // enableBoxes();
     choice.classList.remove('hide')
 
 }
 function disableBoxes(){
     for(let box of boxes){
         box.disabled = true;
-        // box.innerText = "";
+        box.innerText = "";
     }
 }
 function enableBoxes(){
@@ -64,9 +64,10 @@ const checkWinner = () => {
 
         if(pos1 != "" && pos2 != "" && pos3 != ""){
             if(pos1 === pos2 && pos2 === pos3){
-                disableBoxes();
+                
                 WinnerDecided = 1;
                 setTimeout(function(){
+                    // disableBoxes();
                     alert(`Player ${pos1} Wins :)`)
                     Reset();
                 },300);
