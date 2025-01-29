@@ -27,14 +27,14 @@ const winPatterns= [
 function Reset(){
     disableBoxes();
     playerTurn = 0;
-    // enableBoxes();
+    enableBoxes();
     choice.classList.remove('hide')
 
 }
 function disableBoxes(){
     for(let box of boxes){
         box.disabled = true;
-        box.innerText = "";
+        // box.innerText = "";
     }
 }
 function enableBoxes(){
@@ -69,7 +69,7 @@ const checkWinner = () => {
                 setTimeout(function(){
                     alert(`Player ${pos1} Wins :)`)
                     Reset();
-                },200);
+                },300);
                 
             }
         }
@@ -78,7 +78,7 @@ const checkWinner = () => {
         setTimeout(function(){
             alert("DRAW");
             Reset();
-        },200);
+        },300);
     }
 
 
