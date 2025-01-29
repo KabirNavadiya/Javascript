@@ -26,7 +26,16 @@ body{
     background-color: white;
     color: black;
     font-weight: 700;
-
+}
+.player{
+    height: 60px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.281);
+    font-size: 20px;
+    background-color: white;
+    color: black;
+    font-weight: 700;
 }
 .game{
     height: 200px;
@@ -41,4 +50,13 @@ body{
 #reset-game{
     padding: 10px;
     font-size: 20px;
+}
+.hide{
+    display: none;
+}
+.choice{
+    margin: 30px;
+}
+h3{
+    margin: 10px;
 }

@@ -1,8 +1,18 @@
 let boxes = document.querySelectorAll('.box');
 let resetBtn = document.querySelector('#reset-game');
+let choice1 = document.querySelector('.player1');
+let choice2 = document.querySelector('.player2');
+let choice = document.querySelector('.choice');
+// let playerChoice = document.querySelectorAll('.player');
+
 
 let playerTurn = 0;
 let WinnerDecided = 0;
+let startPlayerSymb = "";
+let otherPlayerSymb = "";
+
+disableBoxes();
+
 const winPatterns= [
     [0,1,2],
     [0,3,6],
@@ -15,13 +25,16 @@ const winPatterns= [
 ];
 
 function Reset(){
+    disableBoxes();
     playerTurn = 0;
-    enableBoxes();
+    // enableBoxes();
+    choice.classList.remove('hide')
 
 }
 function disableBoxes(){
     for(let box of boxes){
         box.disabled = true;
+        box.innerText = "";
     }
 }
 function enableBoxes(){
@@ -71,23 +84,42 @@ const checkWinner = () => {
 
 }
 boxes.forEach((box) => {
-    box.addEventListener("click",()=>{
-        console.log("box clicked");  
+    box.addEventListener("click",()=>{  
         if(playerTurn === 0){
-            box.innerText = "O";
+            box.innerText = startPlayerSymb;
             playerTurn = 1;
 
         }
         else{
-            box.innerText = "X";
+            box.innerText = otherPlayerSymb;
             playerTurn = 0;
         }
         //disable button after each turn 
         box.disabled=true;
-        // if(Draw()){
-            
-        // }
         checkWinner();
     })
 
 }); 
+
+function ChoiceX(){
+    startPlayerSymb = choice1.innerText;
+    otherPlayerSymb = choice2.innerText;
+    choice.classList.add('hide');
+    enableBoxes();
+    
+}
+function ChoiceO(){
+    startPlayerSymb = choice2.innerText;
+    otherPlayerSymb = choice1.innerText;
+    choice.classList.add('hide');
+    enableBoxes();
+    
+}
+
+// playerbtn.forEach((player)=>{
+//     player.addEventListener("click",()=>{
+//         console.log(player.innerText);
+//         startPlayerSymb = player.innerText;
+//         document.querySelector('.choice').classList.add('.hide');
+//     })
+// })
