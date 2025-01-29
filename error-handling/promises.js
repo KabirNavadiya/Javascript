@@ -100,12 +100,12 @@ function proceedToPayment(orderId){
     })
 
 }
-function orderSummmary(paymentInfo){
+function orderSummmary(orderInfo){
     return new Promise((resolve,reject)=>{
         resolve("Order Summary");
     })
 }
-function updatewallet(paymentInfo){
+function updatewallet(walletInfo){
     return new Promise((resolve,reject)=>{
         resolve("Wallet Updated");
     })
@@ -122,6 +122,7 @@ function createOrder(cart){
 
         if(!validateCart(cart)){
             const err = new Error("cart not valid");
+            reject(err)
         }
 
         const orderId="1234";
