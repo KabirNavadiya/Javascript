@@ -1,7 +1,7 @@
 
 
 class Calculator{
-    Calculator(){
+    constructor(){
         this.currentvalue = '';
         this.answer = 0;
         this.memory = 0;
