@@ -1,29 +1,15 @@
 const degButton =document.querySelector('.mode-btn');
 const trigButtons = document.querySelectorAll('.btn[data-type="sin"], .btn[data-type="cos"], .btn[data-type="tan"]');
+
+
+// section where arithmatic operations are handled //
 class Arithmetic {
 
-    add(num1,num2){
-        return num1 + num2;
-    }
-    subtract(num1,num2){
-        return num1-num2;
-    }
-    multiply(num1,num2){
-        return num1*num2;
-    }
-    divide(num1,num2){
-        if(num2 === 0){
-            return "Invalid Operation";
-        }
-        else{
-           return num1 / num2;
-        }
-    }
     power(num1,num2){
         return Math.pow(num1,num2);
     }
     root(num1){
-        return Math.sqrt(num1);
+        return (Math.sqrt(num1)).toFixed(4);
     }
     sqr(num1){
         return num1*num1;
@@ -50,14 +36,14 @@ class Arithmetic {
         if (x <= 0) {
             return 'undefined';
         }
-        return Math.log10(x);
+        return (Math.log10(x)).toFixed(4);
     }
 
     naturallog(x){
         if (x <= 0) {
             return 'undefined';
         }
-        return Math.log(x);
+        return (Math.log(x)).toFixed(4);
     }
 
 
@@ -94,8 +80,11 @@ class Arithmetic {
 
 }
 
-class Calculator extends Arithmetic{
 
+
+// section where calculator clicks are handled with functions //
+
+class Calculator extends Arithmetic{
 
     constructor(){
         super();
@@ -170,116 +159,191 @@ class Calculator extends Arithmetic{
     }
 
 
+    Calculate(){
 
-
-    Calculate(currentvalue){
-
-        let num=0;
-        const advOP = ['asin','acos','atan','√','^2','sin','cos','tan','^','10^','inv','!','log','ln'];
-
-        const op = advOP.find(element =>this.currentvalue.includes(element));
-        // console.log(op);
-
-
-        if(advOP.includes(op)){
-            num = currentvalue.match(/-?\d*\.?\d+/g);
-            // console.log(num);
-            
+        let Str='';
+        if(this.currentvalue.includes('^') || this.currentvalue.includes('10^')  ){
+            Str=this.XPowerY(this.currentvalue,'^');
+            let num=this.ExtractLastTwoDigits(Str);
+            console.log(num);
+            let dummy = this.power(parseFloat(num[0]),parseFloat(num[1]));
+            this.currentvalue=this.currentvalue.replace(Str,dummy.toString());
         }
 
-
-        switch(op){
-            case '√':
-                this.answer = this.root(num[0]);
-                break;
-            case '^2':
-                this.answer=this.sqr(num[0]);
-                break;
-            case '^':
-                this.answer=this.power(num[0],num[1]);
-                break;
-            case '10^':
-                this.answer = this.power10(num[1]);
-                break;
-            case 'log':
-                this.answer = this.log(num[0]);
-                break;
-            case 'sin':
-                this.answer = this.sin(num[0]);
-                break;
-            case 'asin':
-                this.answer = Math.round(this.toDegrees(this.Asin(num[0])));
-                this.answer += `°`;
-                // console.log(this.answer);
-                break;
-            case 'cos':
-                this.answer = this.cos(num[0]);
-                break;
-            case 'acos':
-                this.answer =Math.round(this.toDegrees(this.Acos(num[0])));
-                this.answer += `°`;
-                break;
-            case 'tan':
-                this.answer = this.tan(num[0]);
-                break;
-            case 'atan':
-                this.answer =Math.round(this.toDegrees(this.Atan(num[0])));
-                this.answer += `°`;
-                break;
-            case 'inv':
-                this.answer = this.inverse(num[0]);
-                break;
-            case '!':
-                this.answer = this.factorial(num[0]);
-                break;
-            case 'ln':
-                this.answer = this.naturallog(num[0]);
-                break;
-            default :
-                try {
-                    this.answer = eval(this.currentvalue);
-                } catch (error) {
-                    this.answer = "Error";
-                }
-                break;
+        try{
+            this.answer = eval(this.currentvalue);
         }
+        catch(error){
+            this.answer = "Error";
+        }
+
         this.currentvalue = this.answer.toString();
         this.updateDisplay();
+    }
 
-     };
+    XPowerY(str,char){
+        let index = str.indexOf(char);
+        if (index === -1) {
+            return null;
+        }
+        let leftNumMatch = str.slice(0, index).match(/-?\d+(\.\d+)?$/);  // Match number before the operator
+        let rightNumMatch = str.slice(index + 1).match(/^\d+(\.\d+)?/);  // Match number after the operator
+
+        let left = leftNumMatch ? leftNumMatch[0] : '';  
+        let right = rightNumMatch ? rightNumMatch[0] : '';  
+        
+        return left + char + right;
+    }
+
+    ExtractLastDigit(){
+        let match = this.currentvalue.match(/(-?\d*\.?\d+)$/); 
+        return match[0];
+    }
+    ExtractLastTwoDigits(Str) {
+        let match = Str.match(/(-?\d*\.?\d+)(?:\D+(-?\d*\.?\d+))?$/);
+        return match ? [parseFloat(match[1]), parseFloat(match[2] || 0)] : null; 
+    }
+    ReplaceLastDigit(str){
+        this.currentvalue = this.currentvalue.replace(/(-?\d*\.?\d+)$/,str.toString());
+    }
+
+    NumberSquare(){
+        if(this.currentvalue===''){
+            return '';
+        }
+        let num = this.ExtractLastDigit();
+        let dummy = this.sqr(parseFloat(num));
+        this.ReplaceLastDigit(dummy);
+        this.updateDisplay();
+    }
+    NumberInverse(){
+        if(this.currentvalue===''){
+            return '';
+        }
+        let num = this.ExtractLastDigit();
+        let dummy = this.inverse(parseFloat(num));
+        this.ReplaceLastDigit(dummy);
+        this.updateDisplay();
+    }
+    NumberRoot(){
+        if(this.currentvalue===''){
+            return '';
+        }
+        let num = this.ExtractLastDigit();
+        let dummy = this.root(parseFloat(num));
+        this.ReplaceLastDigit(dummy);
+        this.updateDisplay();
+    }
+    NumberLog(){
+        if(this.currentvalue===''){
+            return '';
+        }
+        let num = this.ExtractLastDigit();
+        let dummy = this.log(parseFloat(num));
+        this.ReplaceLastDigit(dummy);
+        this.updateDisplay();
+    }
+    NumberNaturalLog(){
+        if(this.currentvalue===''){
+            return '';
+        }
+        let num = this.ExtractLastDigit();
+        let dummy = this.naturallog(parseFloat(num));
+        this.ReplaceLastDigit(dummy);
+        this.updateDisplay();
+    }
+    NumberFact(){
+        if(this.currentvalue===''){
+            return '';
+        }
+        let num = this.ExtractLastDigit();
+        let dummy = this.factorial(parseFloat(num));
+        this.ReplaceLastDigit(dummy);
+        this.updateDisplay();
+    }
+    NumberSin(){
+        if(this.currentvalue===''){
+            return '';
+        }
+        let num = this.ExtractLastDigit();
+        let dummy = this.sin(parseFloat(num));
+        this.ReplaceLastDigit(dummy);
+        this.updateDisplay();
+    }
+    NumberCos(){
+        if(this.currentvalue===''){
+            return '';
+        }
+        let num = this.ExtractLastDigit();
+        let dummy = this.cos(parseFloat(num));
+        this.ReplaceLastDigit(dummy);
+        this.updateDisplay();
+    }
+    NumberTan(){
+        if(this.currentvalue===''){
+            return '';
+        }
+        let num = this.ExtractLastDigit();
+        let dummy = this.tan(parseFloat(num));
+        this.ReplaceLastDigit(dummy);
+        this.updateDisplay();
+    }
+    NumberAsin(){
+        if(this.currentvalue===''){
+            return '';
+        }
+        let num = this.ExtractLastDigit();
+        let dummy = this.Asin(parseFloat(num));
+        this.ReplaceLastDigit(Math.round(this.toDegrees(dummy)));
+        this.updateDisplay();
+    }
+    NumberAcos(){
+        if(this.currentvalue===''){
+            return '';
+        }
+        let num = this.ExtractLastDigit();
+        let dummy = this.Acos(parseFloat(num));
+        this.ReplaceLastDigit(Math.round(this.toDegrees(dummy)));
+        this.updateDisplay();
+    }
+    NumberAtan(){
+        if(this.currentvalue===''){
+            return '';
+        }
+        let num = this.ExtractLastDigit();
+        let dummy = this.Atan(parseFloat(num));
+        this.ReplaceLastDigit(Math.round(this.toDegrees(dummy)));
+        this.updateDisplay();
+    }
+
 
 }
 
-const calculator = new Calculator();
 
+// object of claculator created //
+const calculator = new Calculator();
 let isDeg= true;
 
+// functionality to change deg->rad and rad->deg
 
 degButton.addEventListener('click',function(){
     isDeg = !isDeg
-    // console.log(isDeg);
     if(isDeg){
         degButton.textContent = 'DEG';
         trigButtons.forEach((button)=>{
             if(button.dataset.type === 'asin'){
                 button.dataset.type = 'sin';
-                button.textContent = 'sin';
-                button.dataset.value = 'sin';
-                // console.log(button.dataset.type );
+                button.textContent = 'sin()';
                 
             }
             else if(button.dataset.type === 'acos'){
                 button.dataset.type = 'cos';
-                button.textContent = 'cos';
-                button.dataset.value = 'cos';
-                // console.log(button.dataset.type );
+                button.textContent = 'cos()';
 
             }
             else if(button.dataset.type === 'atan'){
                 button.dataset.type = 'tan';
-                button.textContent = 'tan';
-                button.dataset.value = 'tan';
-                // console.log(button.dataset.type );
+                button.textContent = 'tan()';
 
             }
         });
@@ -290,22 +354,17 @@ degButton.addEventListener('click',function(){
             if(button.dataset.type === 'sin'){
                 button.dataset.type = 'asin';
                 button.textContent = 'sin⁻¹';
-                button.dataset.value = 'asin';
-                // console.log(button.dataset.type);
 
             }
             else if(button.dataset.type === 'cos'){
                 button.dataset.type = 'acos';
                 button.textContent = 'cos⁻¹';
-                button.dataset.value = 'acos';
-                // console.log(button.dataset.type);
 
             }
             else if(button.dataset.type === 'tan'){
                 button.dataset.type = 'atan';
                 button.textContent = 'tan⁻¹';
-                button.dataset.value = 'atan';
-                // console.log(button.dataset.type);
+
 
             }
         })
@@ -313,6 +372,7 @@ degButton.addEventListener('click',function(){
 
 })
 
+// Section to handle memory //
 
 document.querySelectorAll('.mem-btn').forEach(button =>{
     button.addEventListener("click",function(){
@@ -343,6 +403,9 @@ document.querySelectorAll('.mem-btn').forEach(button =>{
     })
 })
 
+
+// MAIN //
+
 document.querySelectorAll('.btn').forEach(button => {
     button.addEventListener("click",function(){
 
@@ -354,13 +417,49 @@ document.querySelectorAll('.btn').forEach(button => {
  
         switch(type){
             case 'equals':
-                calculator.Calculate(calculator.currentvalue);
+                calculator.Calculate();
                 break;
             case 'del':
                 calculator.Backspace();
                 break;
             case 'clear':
                 calculator.clearScreen();
+                break;
+            case 'NumberSquare':
+                calculator.NumberSquare();
+                break;
+            case 'inverse':
+                calculator.NumberInverse();
+                break;
+            case 'sin':
+                calculator.NumberSin();
+                break;     
+            case 'cos':
+                calculator.NumberCos();
+                break; 
+            case 'tan':
+                calculator.NumberTan();
+                break;   
+            case 'root':
+                calculator.NumberRoot();
+                break;
+            case 'factorial':
+                calculator.NumberFact();
+                break;
+            case 'log':
+                calculator.NumberLog();
+                break;
+            case 'Naturallog':
+                calculator.NumberNaturalLog();
+                break;
+            case 'asin':
+                calculator.NumberAsin();
+                break;
+            case 'acos':
+                calculator.NumberAcos();
+                break;
+            case 'atan':
+                calculator.NumberAtan();
                 break;
         }
     })
