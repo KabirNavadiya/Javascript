@@ -7,8 +7,68 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="calculator">
+        <input type="text" class="display" id="display" disabled>
 
+        <div class="row mode">
+            <button class="mode-btn" data-type = "deg">DEG</button>
+            <button class="mode-btn" data-type="history">HIS</button>
+        </div>
+
+        <div class="row memory">
+            <button class="mem-btn" data-value="" data-type="MemoryClear">MC</button>
+            <button class="mem-btn" data-value="" data-type="MemoryRecall">MR</button>
+            <button class="mem-btn" data-value="" data-type="MemoryAdd">M+</button>
+            <button class="mem-btn" data-value="" data-type="MemorySub">M-</button>
+            <button class="mem-btn" data-value="" data-type="MemoryStore">MS</button>
+        </div>
+
+        <div class="buttons">
+            <button class="btn" data-value="2nd" data-type="">2<sup>nd</sup></button>
+            <button class="btn" data-value="3.14" data-type="pi">π</button>
+            <button class="btn" data-value="e" data-type="exponential">e</button>
+            <button class="btn" data-value="" data-type="clear">AC</button>
+            <button class="btn" data-value="" data-type="del">X</button>
+
+            <button class="btn" data-value="" data-type="NumberSquare">x<sup>2</sup></button>
+            <button class="btn" data-value="" data-type="inverse">1/x</button>
+            <button class="btn" data-value="" data-type="sin">sin()</button>
+            <button class="btn" data-value="" data-type="cos">cos()</button>
+            <button class="btn" data-value="" data-type="tan">tan()</button>
+
+            <button class="btn" data-value="" data-type="root"><sup></sup>√</button>
+            <button class="btn" data-value="(" data-type="OpenParenthesis">(</button>
+            <button class="btn" data-value=")" data-type="CloseParenthesis">)</button>
+            <button class="btn" data-value="" data-type="factorial">n!</button>
+            <button class="btn" data-value="/" data-type="divide">÷</button>
+
+            <button class="btn" data-value="^" data-type="XpowerY">x<sup>y</sup></button>
+            <button class="btn" data-value="7" data-type="number7">7</button>
+            <button class="btn" data-value="8" data-type="number8">8</button>
+            <button class="btn" data-value="9" data-type="number9">9</button>
+            <button class="btn" data-value="*" data-type="multiplication">*</button>
+
+            <button class="btn" data-value="10^" data-type="powerof10">10<sup>x</sup></button>
+            <button class="btn" data-value="4" data-type="number4">4</button>
+            <button class="btn" data-value="5" data-type="number5">5</button>
+            <button class="btn" data-value="6" data-type="number6">6</button>
+            <button class="btn" data-value="-" data-type="subtract">-</button>
+
+            <button class="btn" data-value="" data-type="log">log</button>
+            <button class="btn" data-value="1" data-type="number1">1</button>
+            <button class="btn" data-value="2" data-type="number2">2</button>
+            <button class="btn" data-value="3" data-type="number3">3</button>
+            <button class="btn" data-value="+" data-type="addition">+</button>
+
+            <button class="btn" data-value="" data-type="Naturallog">ln</button>
+            <button class="btn" data-value="%" data-type="modulo">mod</button>
+            <button class="btn"data-value="0" data-type="number0">0</button>
+            <button class="btn" data-value="." data-type="decimal">.</button>
+            <button class="btn equals" data-value="" data-type="equals">=</button>
+        </div>
+
+    </div>
     
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
