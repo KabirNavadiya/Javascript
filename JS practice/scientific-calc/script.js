@@ -46,7 +46,6 @@ class Arithmetic {
         return result;
     }
 
-
     log(x) {
         if (x <= 0) {
             return 'undefined';
@@ -74,16 +73,16 @@ class Arithmetic {
         return Math.tan(this.toRadians(num));
     }
 
-    inversesin(num){
-        return isDeg ? this.toDegrees(Math.asin(num)) : Math.asin(num);
+    Asin(num){
+        return Math.asin(num);
+        
     }
-    inversecos(num){
-        return isDeg ? this.toDegrees(Math.acos(num)) : Math.acos(num);
+    Acos(num){
+        return Math.acos(num);
     }
-    inversetan(num){
-        return isDeg ? this.toDegrees(Math.atan(num)) : Math.atan(num);
+    Atan(num){
+        return Math.atan(num);
     }
-
 
     toDegrees(radians){
         return radians * 180 / Math.PI;
@@ -102,15 +101,11 @@ class Calculator extends Arithmetic{
         super();
         this.currentvalue = '';
         this.answer=0;
+        this.memory = 0;
     }
 
     handleInput(value){
         this.currentvalue+=value;
-        this.updateDisplay();
-    }
-
-    ChangeSign(){
-        this.currentvalue *= -1;
         this.updateDisplay();
     }
 
@@ -132,18 +127,66 @@ class Calculator extends Arithmetic{
         this.updateDisplay();
     }
 
+
+    MemoryStore(){
+        if(this.currentvalue === ''){
+            this.memory = 0;
+        }
+        else{
+            this.memory = parseFloat(this.currentvalue);
+            
+        }
+    }
+
+    MemoryRecall(){
+        this.currentvalue = this.memory.toString();
+        this.updateDisplay()
+    }
+    MemoryAdd(){
+        if(this.currentvalue !== ''){
+            this.currentvalue = parseFloat(this.currentvalue);
+            this.currentvalue += parseFloat(this.memory);
+        }
+        else{
+            this.memory += 0;
+        }
+        this.currentvalue = this.currentvalue.toString();
+        this.updateDisplay()
+    }
+    MemorySubtract(){
+        if(this.currentvalue !== ''){
+            this.currentvalue = parseFloat(this.currentvalue);
+            this.currentvalue -= parseFloat(this.memory);
+        }
+        else{
+            this.memory += 0;
+        }
+        this.currentvalue = this.currentvalue.toString();
+        this.updateDisplay()
+    }
+
+    MemoryClear(){
+        this.memory = 0;
+    }
+
+
+
+
     Calculate(currentvalue){
 
         let num=0;
-        const advOP = ['√','^2','sin','cos','tan','^','10^','inv','!','log','ln','asin','acos','atan'];
+        const advOP = ['asin','acos','atan','√','^2','sin','cos','tan','^','10^','inv','!','log','ln'];
+
         const op = advOP.find(element =>this.currentvalue.includes(element));
+        // console.log(op);
 
 
         if(advOP.includes(op)){
-            num = currentvalue.match(/-?\d+/g);   
-            console.log(num[0]);
+            num = currentvalue.match(/-?\d*\.?\d+/g);
+            // console.log(num);
             
         }
+
 
         switch(op){
             case '√':
@@ -165,19 +208,23 @@ class Calculator extends Arithmetic{
                 this.answer = this.sin(num[0]);
                 break;
             case 'asin':
-                this.answer = this.inversesin(num[0]);
+                this.answer = Math.round(this.toDegrees(this.Asin(num[0])));
+                this.answer += `°`;
+                // console.log(this.answer);
                 break;
             case 'cos':
                 this.answer = this.cos(num[0]);
                 break;
             case 'acos':
-                this.answer = this.inversecos(num[0]);
+                this.answer =Math.round(this.toDegrees(this.Acos(num[0])));
+                this.answer += `°`;
                 break;
             case 'tan':
                 this.answer = this.tan(num[0]);
                 break;
             case 'atan':
-                this.answer = this.inversetan(num[0]);
+                this.answer =Math.round(this.toDegrees(this.Atan(num[0])));
+                this.answer += `°`;
                 break;
             case 'inv':
                 this.answer = this.inverse(num[0]);
@@ -201,23 +248,16 @@ class Calculator extends Arithmetic{
 
      };
 
-     SolveExpression(currentvalue){
-        const operators = ['+', '*', '/'];
-        let parts = currentvalue.split(/([+\*/])/)
-        console.log(parts);
-        
-     }
-
 }
 
 const calculator = new Calculator();
 
 let isDeg= true;
-// console.log(isDeg);
+
 
 degButton.addEventListener('click',function(){
     isDeg = !isDeg
-    console.log(isDeg);
+    // console.log(isDeg);
     if(isDeg){
         degButton.textContent = 'DEG';
         trigButtons.forEach((button)=>{
@@ -225,21 +265,21 @@ degButton.addEventListener('click',function(){
                 button.dataset.type = 'sin';
                 button.textContent = 'sin';
                 button.dataset.value = 'sin';
-                console.log(button.dataset.type );
+                // console.log(button.dataset.type );
                 
             }
             else if(button.dataset.type === 'acos'){
                 button.dataset.type = 'cos';
                 button.textContent = 'cos';
                 button.dataset.value = 'cos';
-                console.log(button.dataset.type );
+                // console.log(button.dataset.type );
 
             }
             else if(button.dataset.type === 'atan'){
                 button.dataset.type = 'tan';
                 button.textContent = 'tan';
                 button.dataset.value = 'tan';
-                console.log(button.dataset.type );
+                // console.log(button.dataset.type );
 
             }
         });
@@ -251,26 +291,56 @@ degButton.addEventListener('click',function(){
                 button.dataset.type = 'asin';
                 button.textContent = 'sin⁻¹';
                 button.dataset.value = 'asin';
-                console.log(button.dataset.type);
+                // console.log(button.dataset.type);
 
             }
             else if(button.dataset.type === 'cos'){
                 button.dataset.type = 'acos';
                 button.textContent = 'cos⁻¹';
                 button.dataset.value = 'acos';
-                console.log(button.dataset.type);
+                // console.log(button.dataset.type);
 
             }
             else if(button.dataset.type === 'tan'){
                 button.dataset.type = 'atan';
                 button.textContent = 'tan⁻¹';
                 button.dataset.value = 'atan';
-                console.log(button.dataset.type);
+                // console.log(button.dataset.type);
 
             }
         })
     }
 
+})
+
+
+document.querySelectorAll('.mem-btn').forEach(button =>{
+    button.addEventListener("click",function(){
+
+        const type = this.getAttribute('data-type');
+        // console.log(type);
+
+
+        switch(type){
+
+            case 'MemoryStore':
+                calculator.MemoryStore();
+                break;
+            case 'MemoryRecall':
+                calculator.MemoryRecall();
+                break;
+            case 'MemoryAdd':
+                calculator.MemoryAdd();
+                break;
+            case 'MemorySub':
+                calculator.MemorySubtract();
+                break;
+            case 'MemoryClear':
+                calculator.MemoryClear();
+                break;
+        }
+        
+    })
 })
 
 document.querySelectorAll('.btn').forEach(button => {
@@ -284,8 +354,6 @@ document.querySelectorAll('.btn').forEach(button => {
  
         switch(type){
             case 'equals':
-                console.log(calculator.currentvalue);
-                calculator.SolveExpression(calculator.currentvalue)
                 calculator.Calculate(calculator.currentvalue);
                 break;
             case 'del':
@@ -294,8 +362,6 @@ document.querySelectorAll('.btn').forEach(button => {
             case 'clear':
                 calculator.clearScreen();
                 break;
-            case 'changesign':
-                calculator.ChangeSign();
         }
     })
 });
