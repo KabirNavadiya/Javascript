@@ -12,6 +12,15 @@ body{
     padding: 15px;
 
 }
+.calculator-dark{
+    background-color: #444444;
+    color: white;
+}
+.btn-dark{
+    background-color: rgb(26, 25, 25);
+    color: white;
+}
+
 
 .display{
     

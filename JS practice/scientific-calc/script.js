@@ -88,6 +88,28 @@ document.querySelectorAll('.mem-btn').forEach(button =>{
     })
 })
 
+const toggle = document.querySelector('.toggle');
+const container = document.querySelector('.calculator');
+const icon = document.querySelector('.bi')
+toggle.addEventListener("click",()=>{
+    // console.log("Toggle clicked");
+
+    container.classList.toggle('calculator-dark');
+    document.getElementById('display').style.color = "white";
+    icon.classList.toggle('bi-moon-fill');
+    icon.classList.toggle('bi-brightness-high-fill');
+    document.querySelectorAll('.btn').forEach(button => {
+        button.classList.toggle('btn-dark');
+    })
+
+    document.querySelectorAll('.mode-btn').forEach(button =>{
+        button.classList.toggle('btn-dark');
+    })
+    document.querySelectorAll('.mem-btn').forEach(button =>{
+        button.classList.toggle('btn-dark');
+    })
+    
+})
 
 // MAIN //
 
