@@ -53,41 +53,57 @@
 
 // 2]
 
-function reverseSubstring(str) {
-    let stack = [];
+// function reverseSubstring(str) {
+//     let stack = [];
     
-    for (let i = 0; i < str.length; i++) {
-        if (str[i] === ")") {
-            let dummy = "";
-            // Pop until you find the opening parenthesis '('
-            while (stack.length > 0 && stack[stack.length - 1] !== "(") {
-                dummy += stack.pop();
-            }
-            stack.pop(); // Remove the opening parenthesis '('
-            // Push the reversed substring back onto the stack
-            for (let j = 0; j < dummy.length; j++) {
-                stack.push(dummy[j]);
-            }
-        } else {
-            // Push the current character onto the stack
-            stack.push(str[i]);
-        }
-    }
+//     for (let i = 0; i < str.length; i++) {
+//         if (str[i] === ")") {
+//             let dummy = "";
+//             while (stack.length > 0 && stack[stack.length - 1] !== "(") {
+//                 dummy += stack.pop();
+//             }
+//             stack.pop();
+//             for (let j = 0; j < dummy.length; j++) {
+//                 stack.push(dummy[j]);
+//             }
+//         } else {
+//             stack.push(str[i]);
+//         }
+//     }
 
-    // Rebuild the string from the stack
-    let temp = "";
-    while (stack.length > 0) {
-        temp += stack.pop();
+//     let temp = "";
+//     while (stack.length > 0) {
+//         temp += stack.pop();
+//     }
+    
+//     return temp.split('').reverse().join('');
+// }
+
+
+function reverseSubstring(str){
+    if(!str.includes("(") && !str.includes(")")){
+        return str;
     }
     
-    return temp.split('').reverse().join('');
+    let i = str.lastIndexOf("(");
+    let j = str.indexOf(")");
+    let dummy = "";
+   
+    // console.log(str.substring(i+1,j));
+    dummy = str.substring(i+1,j);
+    str = str.substring(0,i) + dummy.split('').reverse().join('') + str.substring(j+1);
+    return reverseSubstring(str);
+    
 }
+
 
 
 // foo(car(bar(baz))) => barzabrac
 // foo(cash(va(asd(qwe)f)stas)dash) => foohsadvafqwedsastashsac
 // foo(car)bar => fooracbar
 // foo(car(bar))baz => foovarracbaz
-// const str = "foo(car)bar";
+// const str = "foo(car)bar"
 const str = "foo(cash(va(asd(qwe)f)stas)dash)";
-console.log(reverseSubstring(str));
+// console.log(reverseSubstring(str));
+let reversed = reverseSubstring(str);
+console.log(reversed);
