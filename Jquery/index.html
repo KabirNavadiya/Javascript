@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery learning</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <style> 
+        #panel, #flip {
+          padding: 5px;
+          width: 200px;
+          background-color: #e5eecc;
+          border: solid 1px #c3c3c3;
+        }
+        
+        #panel {
+          display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <p class="a">hide this paragraph !</p>
+    <button class="hide">Hide & show</button>
+    <!-- <button class="show">Show</button> -->
+    <p id="hide-para">double click me! i will disappear</p>
+    <p class="mouseenter">move mouse over me !</p><p id="mouseenter">You entered my area</p>
+    <p class="onexample">click or move mouse over me!</p>
+
+    <button id="fadetoggle">Click to toggle fade  boxes</button>
+    <div id="div1" style="width:80px;height:80px;display:none;background-color:red;"></div>
+    <div id="div2" style="width:80px;height:80px;display:none;background-color:green;"></div>
+    <div id="div3" style="width:80px;height:80px;display:none;background-color:blue;"></div>
+    <!-- <button id="fadeout">Click to fade out boxes</button> -->
+
+    <div id="flip">Click to slide down panel</div>
+    <div id="panel">Hello world!</div>  
+    <br>
+    <button id="boxbutton">Start Animation</button>
+    <div id="p1" style="background:#98bf21;height:50px;width:50px;position:absolute;"></div>
+
+    <button id="chain" style="margin: 20px;">Click me</button>
+    <br><br><br><br>
+    <button id="btn1">change text</button>
+    <p id="chp">paragraph 1</p>
+
+    <p><a href="https://www.w3schools.com" id="w3s">W3Schools.com</a></p>
+    <button id="chglink">Change href Value</button>
+
+</body>
+</html>

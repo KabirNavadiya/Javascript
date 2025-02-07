@@ -91,9 +91,9 @@ document.querySelectorAll('.mem-btn').forEach(button =>{
 const toggle = document.querySelector('.toggle');
 const container = document.querySelector('.calculator');
 const icon = document.querySelector('.bi')
+
 toggle.addEventListener("click",()=>{
     // console.log("Toggle clicked");
-
     container.classList.toggle('calculator-dark');
     document.getElementById('display').style.color = "white";
     icon.classList.toggle('bi-moon-fill');
